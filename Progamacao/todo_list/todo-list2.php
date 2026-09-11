@@ -11,8 +11,6 @@ $conn = new mysqli($localhost,$username,$password,$name);
 if ($conn -> connect_error) {
     die("Deu errado");
 }
-# Exclusão de tarefas
-
 if (isset($_POST['descricao']) && !empty(trim($_POST['descricao']))) {
    $descricao = $conn -> real_escape_string($_POST['descricao']);
    $sqlCreate = "INSERT INTO tarefas (descricao) VALUES ('$descricao')";
@@ -21,7 +19,14 @@ if (isset($_POST['descricao']) && !empty(trim($_POST['descricao']))) {
         header("location: todo-list2.php");
    }
 }
-
+# Exclusão de tarefas
+if (isset($_GET['delete'])) {
+    $id = intval($_GET['delete']);
+    $sqldelete = "DELETE FROM tarefas WHERE id = '$id'";
+    if ($conn -> query($sqldelete) == TRUE) {
+        header("location: todo-list2.php");
+    }
+}
 $tarefas=[];
 # Listar tarefas
 
@@ -59,9 +64,9 @@ if ($result -> num_rows > 0) {
             <?php foreach ($tarefas as $tarefa): ?>
             <li> 
                 <?php echo $tarefa['descricao']?>
+                <a href="todo-list2.php?delete=<?php echo $tarefa['id']?> ">Excluir</a>
         </li>
             <?php endforeach ?>
-            <li>Tenho uma tarefa</li>
         </ul>
     <?php else: ?>
     <h3>Não tem tarefas</h3>
