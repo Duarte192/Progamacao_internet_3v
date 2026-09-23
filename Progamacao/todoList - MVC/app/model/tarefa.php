@@ -33,6 +33,13 @@ class Tarefa{
         $sql = "delete from tarefas where id = '$id'";
         return $this -> conn -> query($sql);
     }
+    public function editar($descricao, $id){
+        $id = intval($id);
+        $descricao = $this -> conn -> real_scape_string($descricao);
+        $sql = "UPDATE tarefas SET descricao = '$descricao' where id ='$id'";
+        return $this -> conn -> query($sql);
+    }
+
 
 
 
