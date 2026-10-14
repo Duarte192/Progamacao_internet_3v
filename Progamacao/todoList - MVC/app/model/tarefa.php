@@ -7,21 +7,20 @@ class Tarefa{
         $this->conn =$db->conectar();
     }
 
-    
-    public function listar(){
-        $tarefas = [];
-        $sql = "SELECT * FROM tarefas ORDER BY data_criacao DESC";
+public function listar(){
+    $tarefas = [];
 
-        $resultado = $this -> conn -> query($sql);
+    $sql = "SELECT * FROM tarefas ORDER BY data_criacao DESC";
+    $resultado = $this->conn->query($sql);
 
-        if ($resultado -> num_rows > 0) {
-            while ($rows = $resultado -> fetch_assoc()) {
-                $tarefas[] = $rows; 
-            }
+    if ($resultado && $resultado->num_rows > 0) {
+        while ($row = $resultado->fetch_assoc()) {
+            $tarefas[] = $row;
         }
-        return $tarefas;    
-
     }
+
+    return $tarefas;
+}
 
     public function criar($descricao){
         $descricao = $this -> conn -> real_escape_string($descricao);
@@ -35,9 +34,11 @@ class Tarefa{
     }
     public function editar($descricao, $id){
         $id = intval($id);
-        $descricao = $this -> conn -> real_scape_string($descricao);
-        $sql = "UPDATE tarefas SET descricao = '$descricao' where id ='$id'";
-        return $this -> conn -> query($sql);
+        $descricao = $this->conn->real_escape_string($descricao);
+
+        $sql = "UPDATE tarefas SET descricao = '$descricao' WHERE id = '$id'";
+
+        return $this->conn->query($sql);
     }
 
 

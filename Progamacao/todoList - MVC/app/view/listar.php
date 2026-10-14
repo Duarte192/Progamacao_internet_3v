@@ -47,6 +47,7 @@
                     <a href="index.php?action=excluir&id=<?php echo $tarefa['id']; ?>">
                         Excluir
                     </a>
+                    </a>
                     <button
                         onclick="abrirModal(<?php echo $tarefa['id']; ?>,
                             '<?php echo ($tarefa['descricao']); ?>')">
@@ -62,13 +63,15 @@
 
     <script>
         function abrirModal(id, descricao) {
-            document.getElementById("editarId").value
-            
-            document.getElementByid("editarDescricao").value
-            document.getElementById("modalEditar").style.display = "block"
+            document.getElementById("editarId").value = id;
+
+            document.getElementById("editarDescricao").value = descricao;
+
+            document.getElementById("modalEditar").style.display = "block";
         }
-        function fecharModal(){
-            document.getElementById("modalEditar").style.display = "none"
+
+        function fecharModal() {
+            document.getElementById("modalEditar").style.display = "none";
         }
     </script>
 

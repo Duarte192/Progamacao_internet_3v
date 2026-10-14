@@ -7,7 +7,7 @@ switch ($action) {
     case 'criar':
         $controller->criar();
         break;
-    
+
     case 'excluir':
         $controller->excluir();
         break;
