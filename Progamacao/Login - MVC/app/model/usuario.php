@@ -7,20 +7,18 @@ Class Usuario{
 
     public function __construct(){
         $db = new Database;
-        $this -> conn = $db -> conectar();
+        $this->conn = $db->conectar();
     }
 
     public function buscarPorEmail($email){
-        $sql = "SELECT * from usuarios where email = ?";
-        $stmt = $this -> conn -> prepare($sql);
-        $stmt = bind_param("s", $email);
-        $stmt = execute();
-
-        $resultado = $stmt -> get_result();
-        return $resultado -> fetch_assoc();
+        $sql = "SELECT * FROM usuarios WHERE email = ?";
+        $stmt = $this->conn->prepare($sql);
         
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+
+        $resultado = $stmt->get_result();
+        return $resultado->fetch_assoc();
     }
-
 }
-
 ?>
