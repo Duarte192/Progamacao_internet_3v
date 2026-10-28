@@ -9,9 +9,9 @@ class tarefaController{
     }
 
     public function criar(){
-        if(isset($_POST['descricao']) && !empty(trim($_POST['descricao']))){
+        if(isset($_POST['descricao']) && !empty(trim($_POST['descricao'])) && isset($_POST['id_usuario']) && !empty($_POST['id_usuario'])){
 
-            $this->tarefaModel->criar(trim($_POST['descricao']));
+            $this->tarefaModel->criar(trim($_POST['descricao']) , $_POST['id_usuario']);
         }
 
         header("Location: index.php");

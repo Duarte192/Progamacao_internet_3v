@@ -23,11 +23,13 @@ public function listar(){
     return $tarefas;
 }
 
-    public function criar($descricao){
+    public function criar($descricao,$userId){
         $descricao = $this -> conn -> real_escape_string($descricao);
-        $sql = "insert into tarefas (descricao) Values ('$descricao')";
+        $userId = $this -> conn -> intval($userId);
+        $sql = "insert into tarefas (descricao,userId) Values ('$descricao','$userId')";
         return $this -> conn -> query($sql);
     }
+    
     public function excluir($id){
         $id = intval($id);
         $sql = "delete from tarefas where id = '$id'";
