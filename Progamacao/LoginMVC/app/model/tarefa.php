@@ -30,12 +30,12 @@ class Tarefa{
 
     }
     public function editar($descricao, $id){
-        $stmt = $this-> conn -> prepare("UPDATE tarefas SET descricao = '$descricao' WHERE id ='$id'");
+        $stmt = $this-> conn -> prepare("UPDATE tarefas SET descricao = ? WHERE id = ?");
         $stmt -> bind_param("si", $descricao,$id);
         return $stmt -> execute();
     }
     public function excluir($id){
-        $stmt = $this -> conn -> prepare("DELETE FROM TAREFAS WHERE id = '$id' ");
+        $stmt = $this -> conn -> prepare("DELETE FROM TAREFAS WHERE id = ? ");
         $stmt -> bind_param("i", $id);
         return $stmt -> execute();
     }
