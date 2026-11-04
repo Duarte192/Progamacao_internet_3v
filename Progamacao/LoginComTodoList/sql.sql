@@ -15,3 +15,15 @@ CREATE TABLE usuarios (
     email VARCHAR(150) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL
 );
+
+
+
+INSERT INTO usuarios (nome, email, senha)
+VALUES (
+    'João',
+    'JO@gmail.com',
+    '$2y$10$/LOjHnJysPuFYA.9j7tqDuZP7ZD2mUodPN5LjO3bxHBdQYZqZ7HOG'
+);
+
+
+php -r "echo password_hash('123456', PASSWORD_DEFAULT), PHP_EOL;

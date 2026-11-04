@@ -7,12 +7,16 @@ class Tarefa{
         $this->conn =$db->conectar();
     }
 
-public function listar(){
-    
+public function listar($id_usuario){
+
     $tarefas = [];
 
-    $sql = "SELECT * FROM tarefas ORDER BY data_criacao DESC";
-    $resultado = $this->conn->query($sql);
+    $stmt = $this -> conn -> prepare("SELECT * FROM tarefas where id_usuario = ? ORDER BY data_criacao DESC;");
+    $stmt -> bind_param("i", $id_usuario);
+    $stmt -> execute();
+
+    $resultado = $stmt -> get_result();
+    
 
     if ($resultado && $resultado->num_rows > 0) {
         while ($row = $resultado->fetch_assoc()) {
@@ -23,11 +27,10 @@ public function listar(){
     return $tarefas;
 }
 
-    public function criar($descricao,$userId){
-        $descricao = $this -> conn -> real_escape_string($descricao);
-        $userId = $this -> conn -> intval($userId);
-        $sql = "insert into tarefas (descricao,userId) Values ('$descricao','$userId')";
-        return $this -> conn -> query($sql);
+    public function criar($descricao,$id_usuario){
+        $stmt = $this -> conn -> prepare("INSERT INTO tarefas (descricao, id_usuario) VALUES (?,?)");
+        $stmt -> bind_param("si", $descricao,$id_usuario);
+        return $stmt -> execute();
     }
     
     public function excluir($id){

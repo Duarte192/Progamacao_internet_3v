@@ -56,7 +56,7 @@ class UsuarioController
             exit;
         }
         $tarefaModel = new Tarefa();
-        $tarefas = $tarefaModel->listar();
+        $tarefas = $tarefaModel->listar($_SESSION['id']);
         include __DIR__ . '/../view/painel.php';
     }
 
