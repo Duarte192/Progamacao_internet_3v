@@ -1,7 +1,7 @@
 <?php 
-sessiont_start();
-require_once __DIR__ . '/../controller/tarefaController.php';
-require_once __DIR__ . '/../controller/usuarioController.php';
+session_start();
+require_once __DIR__ . '/app/controller/tarefacontroller.php';
+require_once __DIR__ . '/app/controller/usuarioController.php';
 
 $tarefaController = new tarefaController();
 $usuarioController = new usuarioController();

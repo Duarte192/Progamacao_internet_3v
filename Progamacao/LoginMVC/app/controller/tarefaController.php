@@ -21,7 +21,16 @@ class TarefaController{
         exit;
     }
     public function editar(){
-        
+        if (isset($_SESSION['id']) && isset($_POST['descricao']) && !empty($_POST['descricao'])) {
+            $this -> tarefaModel -> editar($_POST['descricao'], $_SESSION['id']);
+        }
+        header("Location: index.php");
+    } 
+    public function excluir(){
+        if (isset($_GET['id'])) {
+            $this -> tarefaModel -> excluir($_GET['id']);
+        }
+        header('Location: index.php');
     }
 
 

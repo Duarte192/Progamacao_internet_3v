@@ -8,7 +8,7 @@ class Usuario{
         $db = new Database();
         $conn = $db -> conectar();
 }
-    public function buscarporEmail($email){
+    public function buscarPorEmail($email){
         $stmt = $this -> conn -> prepare("SELECT * FROM usuarios WHERE email = ?");
         $stmt -> bind_param("s",$email);
         $stmt -> execute();
