@@ -13,9 +13,11 @@ switch ($action) {
         $tarefaController -> criar();
         break;
     case 'editar':
+        echo("Olá");
         $tarefaController -> editar();
         break;
     case 'excluir':
+        
         $tarefaController -> excluir();
         break;
     case 'autenticar':

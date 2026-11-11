@@ -10,9 +10,9 @@
 
             <input type="text" name="descricao" id="editarDescricao">
 
-            <button type="submit"> Salvar </button>
+            <button type="submit" id="salvar"> Salvar </button>
 
-            <button type="button" onclick="fecharModal()">Cancelar</button>
+            <button type="button" id="excluir" onclick="fecharModal()">Cancelar</button>
 
         </form>
 

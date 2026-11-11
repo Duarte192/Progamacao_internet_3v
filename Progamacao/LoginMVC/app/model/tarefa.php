@@ -10,7 +10,7 @@ class Tarefa{
     public function listar($id_usuario){
         $tarefas = [];
 
-        $stmt = $this -> conn -> prepare("SELECT * FROM tarefas WHERE id = ? ORDER BY data_criacao DESC;");
+        $stmt = $this -> conn -> prepare("SELECT * FROM tarefas WHERE id_usuario = ? ORDER BY data_criacao DESC;");
         $stmt -> bind_param("i", $id_usuario);
         $stmt -> execute();
 
@@ -26,7 +26,7 @@ class Tarefa{
     public function criar($descricao,$id_usuario){
         $stmt = $this -> conn -> prepare("INSERT INTO tarefas (descricao, id_usuario) VALUES (?,?)");
         $stmt -> bind_param("si", $descricao,$id_usuario);
-        return $stmt -> execute;
+        return $stmt -> execute();
 
     }
     public function editar($descricao, $id){

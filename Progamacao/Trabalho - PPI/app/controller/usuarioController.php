@@ -55,6 +55,6 @@ class UsuarioController{
             exit;
         }
         $erro = "E-mail ou senha estão incorretos";
-        include __DIR__ . '/../view/login.php';
+        include_once __DIR__ . '/../view/login.php';
     }
 }

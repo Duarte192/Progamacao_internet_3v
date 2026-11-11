@@ -21,7 +21,7 @@ class TarefaController{
     }
     public function editar(){
         if (isset($_SESSION['id']) && isset($_POST['descricao']) && !empty($_POST['descricao'])) {
-            $this -> tarefaModel -> editar($_POST['descricao'], $_SESSION['id']);
+            $this -> tarefaModel -> editar($_POST['descricao'], $_POST['id']);
         }
         header("Location: index.php");
     } 

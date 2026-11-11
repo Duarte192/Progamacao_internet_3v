@@ -1,0 +1,46 @@
+* {
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+    display: block;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    justify-content: center;
+    background: linear-gradient(to right, rgb(19, 19, 25), rgb(150, 147, 147));
+
+}
+button {
+    background-color: aliceblue;
+    color: black;
+    border-radius: 10px;
+    padding: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    border: 2px solid black;
+    margin: 5px;
+    letter-spacing: 0px;
+}
+
+button:hover {
+    scale: 1.1;
+}
+#login{
+    margin-top: 10%;
+    background-color: rgb(4, 25, 42);
+    padding: 10px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    width: 35%;
+    margin-left: 32%;
+    border-radius: 20px;
+}
+input {
+    border-radius: 10px;
+    padding: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    color: black;
+}

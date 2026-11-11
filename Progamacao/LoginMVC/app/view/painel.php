@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>To-Do List (MVC)</title>
@@ -29,7 +30,9 @@
         }
     </style>
 </head>
+
 <body>
+
 
     <h1>
         Bem-vindo ao painel,
@@ -40,7 +43,7 @@
         <a href="index.php?action=logout">Sair</a>
     </p>
 
-       <h1>TO-DO List (MVC)</h1>
+    <h1>TO-DO List (MVC)</h1>
 
     <form action="index.php?action=criar" method="POST">
         <input type="text" name="descricao" placeholder="Descrição da tarefa">
@@ -52,18 +55,17 @@
         <ul>
             <?php foreach ($tarefas as $tarefa): ?>
                 <li>
-                    
+
                     <?php echo ($tarefa['descricao']); ?>
                     <a href="index.php?action=excluir&id=<?php echo $tarefa['id']; ?>">
                         Excluir
                     </a>
                     </a>
-                    <button
-                        onclick="abrirModal(<?php echo $tarefa['id']; ?>,
+                    <button onclick="abrirModal(<?php echo $tarefa['id']; ?>,
                             '<?php echo ($tarefa['descricao']); ?>')">
                         Editar
                     </button>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
         </ul>
     <?php else: ?>
         <p>Não há tarefas ainda!</p>
@@ -87,4 +89,5 @@
 
 
 </body>
+
 </html>

@@ -55,6 +55,7 @@ class UsuarioController
             header("Location: index.php");
             exit;
         }
+        
         $tarefaModel = new Tarefa();
         $tarefas = $tarefaModel->listar($_SESSION['id']);
         include __DIR__ . '/../view/painel.php';

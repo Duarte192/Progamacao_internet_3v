@@ -23,9 +23,9 @@ class Tarefa{
         }
         return $tarefas;
     }
-    public function criar($descricao,$id_usuario){
+    public function criar($descricao,$id){
         $stmt = $this -> conn -> prepare("INSERT INTO tarefas (descricao, id_usuario) VALUES (?,?)");
-        $stmt -> bind_param("si", $descricao,$id_usuario);
+        $stmt -> bind_param("si", $descricao,$id);
         return $stmt -> execute();
 
     }

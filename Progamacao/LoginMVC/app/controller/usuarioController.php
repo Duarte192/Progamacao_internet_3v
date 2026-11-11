@@ -1,34 +1,47 @@
-<?php 
+<?php
 include_once __DIR__ . '/../model/usuario.php';
 
-class UsuarioController{
+class UsuarioController
+{
     private $usuarioModel;
 
-    public function __construct(){
-        $this -> usuarioModel = new Usuario();
+    public function __construct()
+    {
+        $this->usuarioModel = new Usuario();
     }
-    public function index(){
-    if (isset($_SESSION['id'])) {
+    public function index()
+    {
+        if (isset($_SESSION['id'])) {
             header('Location: index.php?action=painel');
             exit;
         }
         include __DIR__ . '/../view/login.php';
     }
-    public function painel(){
+    public function painel()
+    {
         if (!isset($_SESSION['id'])) {
             header('Location: index.php');
             exit;
         }
+
+        include_once __DIR__ . '/../model/tarefa.php';
+
+        $tarefaModel = new Tarefa();
+
+        $tarefas = $tarefaModel->listar($_SESSION['id']);
+
         include __DIR__ . '/../view/painel.php';
     }
-    public function logout(){
+    public function logout()
+    {
         session_destroy();
         header('Location: index.php');
         exit;
 
     }
-    public function autenticar(){
-        if (!isset($_POST['email'],$_POST['senha'])) {
+    public function autenticar()
+    {
+        if (!isset($_POST['email'], $_POST['senha'])) {
             header('Location: index.php');
             exit;
         }
@@ -39,9 +52,9 @@ class UsuarioController{
             $erro = 'Email ou senha estão inválidas!';
             include __DIR__ . '/../view/login.php';
         }
-        
-        $usuario = $this -> usuarioModel -> buscarPorEmail($email);
-        if ($usuario  && password_verify($senha,$usaurio['senha'])) {
+
+        $usuario = $this->usuarioModel->buscarPorEmail($email);
+        if ($usuario && password_verify($senha, $usuario['senha'])) {
             session_regenerate_id(true);
             $_SESSION['id'] = $usuario['id'];
             $_SESSION['nome'] = $usuario['nome'];

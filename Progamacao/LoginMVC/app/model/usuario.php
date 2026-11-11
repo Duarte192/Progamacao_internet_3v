@@ -6,7 +6,7 @@ class Usuario{
 
     public function __construct(){
         $db = new Database();
-        $conn = $db -> conectar();
+        $this -> conn = $db -> conectar();
 }
     public function buscarPorEmail($email){
         $stmt = $this -> conn -> prepare("SELECT * FROM usuarios WHERE email = ?");

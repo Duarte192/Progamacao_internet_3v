@@ -8,18 +8,23 @@ class TarefaController{
         $this -> tarefaModel = new Tarefa();
     }
 
-    public function criar(){
-        if(!isset($_SESSION['id'])){
-            header('Location: index.php');
-            exit;
-        }
-        if (isset($_POST['descricao']) && trim($_POST['descricao']) !== '') {
-            $this-> tarefaModel -> criar($_POST['descricao'],$_SESSION['id']);
-        }
-
-        header('Location: index.php?action=painel');
+public function criar()
+{
+    if (!isset($_SESSION['id'])) {
+        header("Location: index.php");
         exit;
     }
+
+    if (isset($_POST['descricao']) && trim($_POST['descricao']) !== '') {
+        $this->tarefaModel->criar(
+            trim($_POST['descricao']),
+            $_SESSION['id']
+        );
+    }
+
+    header("Location: index.php?action=painel");
+    exit;
+}
     public function editar(){
         if (isset($_SESSION['id']) && isset($_POST['descricao']) && !empty($_POST['descricao'])) {
             $this -> tarefaModel -> editar($_POST['descricao'], $_SESSION['id']);
